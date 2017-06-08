@@ -1,0 +1,29 @@
+[user]
+	name = danislu
+	email = danislu@gmail.com
+[core]
+	fscache = true
+	editor = code --wait
+	autocrlf = true
+[http]
+	sslVerify = false
+[credential]
+	helper = wincred
+	modalPrompt = true
+[alias]
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+	jira = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"	
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = TortoiseGitMerge
+[mergetool "TortoiseGitMerge"]
+	path = C:\\Program Files\\TortoiseGit\\bin\\TortoiseGitMerge.exe
