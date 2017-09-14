@@ -1,6 +1,6 @@
 [user]
-	name = Lundekvam, Daniel
-	email = Daniel.Lundekvam@skandiabanken.no
+	name = Blah
+	email = Blah@blah.blah
 [core]
 	fscache = true
 	editor = code --wait
