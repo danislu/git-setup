@@ -1,6 +1,6 @@
 [user]
-	name = <name>
-	email = <email>
+	name = Lundekvam, Daniel
+	email = Daniel.Lundekvam@skandiabanken.no
 [core]
 	fscache = true
 	editor = code --wait
@@ -19,11 +19,11 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 	jira = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"	
 [diff]
-	tool = vscode
+    tool = vscode
 [difftool]
-	prompt = false
+  prompt = false
 [difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+    cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "sourcetree"]
 	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
 [merge]
@@ -33,3 +33,5 @@
 [mergetool "sourcetree"]
 	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
 	trustExitCode = true
+[rerere]
+	enabled = true
