@@ -17,7 +17,8 @@
 	br = branch
 	co = checkout
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-	jira = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"	
+	jira = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
+	git = !exec git
 [diff]
     tool = vscode
 [difftool]
