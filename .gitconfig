@@ -1,40 +1,36 @@
-[user]
-	name = Blah
-	email = Blah@blah.blah
-[core]
-	fscache = true
-	editor = code --wait
-	autocrlf = true
-[http]
-	sslVerify = false
 [credential]
-	helper = wincred
-	modalPrompt = true
+    helper = manager
 [alias]
-	up = "!git remote update -p; git merge --ff-only @{u}"
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-	find = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
-	git = !exec git
-	hist = !git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-	stuff = stash -u
+    up = "!git remote update -p; git merge --ff-only @{u}"
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+    find = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
+    git = !exec git
+    hist = !git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    stuff = stash -u
 [diff]
     tool = vscode
 [difftool]
-  prompt = false
+    prompt = false
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "sourcetree"]
-	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
+    cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = TortoiseGitMerge
-[mergetool "TortoiseGitMerge"]
-	path = C:\\Program Files\\TortoiseGit\\bin\\TortoiseGitMerge.exe
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [mergetool "sourcetree"]
-	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
-	trustExitCode = true
+    cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
+    trustExitCode = true
 [rerere]
-	enabled = true
+    enabled = true
+[push]
+    default = simple
+[core]
+    editor = code --wait
+[pull]
+    rebase = true
