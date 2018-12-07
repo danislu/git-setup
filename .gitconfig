@@ -26,8 +26,8 @@
 [mergetool "vscode"]
     cmd = code --wait $MERGED
 [mergetool "sourcetree"]
-	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
-	trustExitCode = true
+    cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
+    trustExitCode = true
 [rerere]
     enabled = true
 [push]
