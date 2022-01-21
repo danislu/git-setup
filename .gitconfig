@@ -6,6 +6,7 @@
     ci = commit
     br = branch
     co = checkout
+    deepclean = clean -fdx
     wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
     find = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
     git = !exec git
