@@ -1,39 +1,41 @@
-[credential]
-    helper = manager
-[alias]
-    up = "!git remote update -p; git merge --ff-only @{u}"
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    deepclean = clean -fdx
-    wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-    find = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
-    git = !exec git
-    hist = !git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-    stuff = stash -u
-    unstuff = stash pop
-    fpush = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
-[diff]
-    tool = vscode
-[difftool]
-    prompt = false
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-[difftool "sourcetree"]
-	cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
-[merge]
-    tool = vscode
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
-[mergetool "sourcetree"]
-    cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe'  -base:\"$BASE\" -mine:\"$LOCAL\" -theirs:\"$REMOTE\" -merged:\"$MERGED\"
-    trustExitCode = true
-[rerere]
-    enabled = true
-[push]
-    default = simple
+# This is Git's per-user configuration file.
 [core]
-    editor = code --wait
+  editor = code --wait
+  excludesfile = /Users/daniellundekvam/.gitignore_global
+[alias]
+  up = "!git remote update -p; git merge --ff-only @{u}"
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  deepclean = clean -fdx
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  find = "!sh -c 'git log --pretty=format:\"%h %s\" --all --grep=\"$1\"' -"
+  git = !exec git
+  hist = !git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  stuff = stash -u
+  unstuff = stash pop
+  fpush = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
 [pull]
-    rebase = true
+  rebase = true
+[rerere]
+  enabled = true
+[push]
+  default = simple
+[difftool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustExitCode = true
+[commit]
+	template = /Users/daniellundekvam/.stCommitMsg
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
