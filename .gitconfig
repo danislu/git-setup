@@ -18,11 +18,11 @@
   fpush = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
 [pull]
   rebase = true
-  autoSetupRemote = true
 [rerere]
   enabled = true
 [push]
   default = simple
+  autoSetupRemote = true
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path =
