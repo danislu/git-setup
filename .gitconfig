@@ -1,7 +1,10 @@
 # This is Git's per-user configuration file.
+[user]
+	name = daniel
+	email = daniel@norapps.no
 [core]
   editor = code --wait
-  excludesfile = /Users/daniellundekvam/.gitignore_global
+	excludesfile = /Users/daniellundekvam/.gitignore_global
 [alias]
   up = "!git remote update -p; git merge --ff-only @{u}"
   st = status
@@ -16,16 +19,17 @@
   stuff = stash -u
   unstuff = stash pop
   fpush = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+  nuke = "!git clean -fxd"
 [pull]
   rebase = true
 [rerere]
   enabled = true
 [push]
   default = simple
-  autoSetupRemote = true
+	autoSetupRemote = true
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
@@ -40,3 +44,8 @@
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
