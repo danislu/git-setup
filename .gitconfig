@@ -18,7 +18,7 @@
   hist = !git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   stuff = stash -u
   unstuff = stash pop
-  fpush = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+  fpush = "!git push --force-with-lease origin $(git rev-parse --abbrev-ref HEAD)"
   nuke = "!git clean -fxd"
 
   home = git switch develop
